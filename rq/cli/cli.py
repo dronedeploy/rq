@@ -33,7 +33,7 @@ config_option = click.option('--config', '-c',
 
 def connect(url, config=None):
     if url:
-        return StrictRedis.from_url(url)
+        return StrictRedis.from_url(url, connection_timeout=15)
 
     settings = read_config_file(config) if config else {}
     return get_redis_from_config(settings)
